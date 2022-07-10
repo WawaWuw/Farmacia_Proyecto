@@ -14,7 +14,14 @@ namespace Farmacia_Proyecto
     {
         public VentasR()
         {
+            
             InitializeComponent();
+            labelF.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

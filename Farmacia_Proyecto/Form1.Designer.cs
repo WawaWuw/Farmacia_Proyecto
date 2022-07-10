@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.PanelMenu = new System.Windows.Forms.Panel();
+            this.VentaRea = new System.Windows.Forms.Button();
             this.BtnEmpleado = new System.Windows.Forms.Button();
             this.BtnCliente = new System.Windows.Forms.Button();
             this.btnVentas = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@
             this.Logo = new System.Windows.Forms.PictureBox();
             this.Panelcontenedor = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.VentaRea = new System.Windows.Forms.Button();
             this.PanelMenu.SuspendLayout();
             this.ContenedorLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
@@ -60,6 +60,19 @@
             this.PanelMenu.Name = "PanelMenu";
             this.PanelMenu.Size = new System.Drawing.Size(200, 445);
             this.PanelMenu.TabIndex = 0;
+            // 
+            // VentaRea
+            // 
+            this.VentaRea.Dock = System.Windows.Forms.DockStyle.Top;
+            this.VentaRea.FlatAppearance.BorderSize = 0;
+            this.VentaRea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VentaRea.Location = new System.Drawing.Point(0, 235);
+            this.VentaRea.Name = "VentaRea";
+            this.VentaRea.Size = new System.Drawing.Size(200, 40);
+            this.VentaRea.TabIndex = 5;
+            this.VentaRea.Text = "Realizar venta";
+            this.VentaRea.UseVisualStyleBackColor = true;
+            this.VentaRea.Click += new System.EventHandler(this.VentaRea_Click);
             // 
             // BtnEmpleado
             // 
@@ -154,19 +167,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // VentaRea
-            // 
-            this.VentaRea.Dock = System.Windows.Forms.DockStyle.Top;
-            this.VentaRea.FlatAppearance.BorderSize = 0;
-            this.VentaRea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VentaRea.Location = new System.Drawing.Point(0, 235);
-            this.VentaRea.Name = "VentaRea";
-            this.VentaRea.Size = new System.Drawing.Size(200, 40);
-            this.VentaRea.TabIndex = 5;
-            this.VentaRea.Text = "Realizar venta";
-            this.VentaRea.UseVisualStyleBackColor = true;
-            this.VentaRea.Click += new System.EventHandler(this.VentaRea_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,7 +175,8 @@
             this.Controls.Add(this.Panelcontenedor);
             this.Controls.Add(this.PanelMenu);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Farmacia \"Lolita\"";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.PanelMenu.ResumeLayout(false);
             this.ContenedorLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
