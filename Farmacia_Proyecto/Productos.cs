@@ -17,7 +17,7 @@ namespace Farmacia_Proyecto
         {
             InitializeComponent();
         }
-        SqlConnection conexion = new SqlConnection("Server = DESKTOP-1LQHI27;database=Proyecto_Farmaci;integrated security=true");
+        SqlConnection conexion = new SqlConnection("Server = DESKTOP-UP2SA5G\\SQLEXPRESS;database=Proyecto_Farmaci;integrated security=true");
         public void llenar_tabla()
         {
             string consulta = "select * from Producto";
@@ -171,7 +171,7 @@ namespace Farmacia_Proyecto
             texDescr.Clear();
             texExis.Clear();
             texPrecio.Clear();
-            texVencimiento.Clear();
+           
         }
 
         private void dataProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
