@@ -52,11 +52,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Busquedapro = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.TBTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.TbSubTotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.TBIVa = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.BLimpiar = new System.Windows.Forms.Button();
             this.BBorrar = new System.Windows.Forms.Button();
@@ -262,12 +262,12 @@
             this.Busquedapro.UseVisualStyleBackColor = true;
             this.Busquedapro.Click += new System.EventHandler(this.BAgregarCarrito_Click);
             // 
-            // textBox4
+            // TBTotal
             // 
-            this.textBox4.Location = new System.Drawing.Point(664, 393);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 28;
+            this.TBTotal.Location = new System.Drawing.Point(664, 393);
+            this.TBTotal.Name = "TBTotal";
+            this.TBTotal.Size = new System.Drawing.Size(100, 20);
+            this.TBTotal.TabIndex = 28;
             // 
             // label5
             // 
@@ -278,12 +278,12 @@
             this.label5.TabIndex = 27;
             this.label5.Text = "Total";
             // 
-            // textBox5
+            // TbSubTotal
             // 
-            this.textBox5.Location = new System.Drawing.Point(664, 333);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 30;
+            this.TbSubTotal.Location = new System.Drawing.Point(664, 333);
+            this.TbSubTotal.Name = "TbSubTotal";
+            this.TbSubTotal.Size = new System.Drawing.Size(100, 20);
+            this.TbSubTotal.TabIndex = 30;
             // 
             // label9
             // 
@@ -294,12 +294,12 @@
             this.label9.TabIndex = 29;
             this.label9.Text = "Sub total";
             // 
-            // textBox6
+            // TBIVa
             // 
-            this.textBox6.Location = new System.Drawing.Point(664, 362);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 32;
+            this.TBIVa.Location = new System.Drawing.Point(664, 362);
+            this.TBIVa.Name = "TBIVa";
+            this.TBIVa.Size = new System.Drawing.Size(100, 20);
+            this.TBIVa.TabIndex = 32;
             // 
             // label13
             // 
@@ -428,11 +428,11 @@
             this.Controls.Add(this.BFacturar);
             this.Controls.Add(this.BBorrar);
             this.Controls.Add(this.BLimpiar);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.TBIVa);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.TbSubTotal);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.TBTotal);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Busquedapro);
             this.Controls.Add(this.texPrecio);
@@ -485,11 +485,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button Busquedapro;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox TBTotal;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox TbSubTotal;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox TBIVa;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button BLimpiar;
         private System.Windows.Forms.Button BBorrar;

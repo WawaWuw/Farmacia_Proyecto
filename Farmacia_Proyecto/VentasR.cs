@@ -24,7 +24,7 @@ namespace Farmacia_Proyecto
         {
            
         }
-
+       
         private void BAgregarCarrito_Click(object sender, EventArgs e)
         {
             conexion.Open();
@@ -38,6 +38,9 @@ namespace Farmacia_Proyecto
                 texPrecio.Text = registro["Precio"].ToString();
             }
             conexion.Close();
+
+
+           
         }
 
         private void VentasR_Load(object sender, EventArgs e)
@@ -63,7 +66,7 @@ namespace Farmacia_Proyecto
 
         private void Agregado_Click(object sender, EventArgs e)
         {
-
+            double n;
             //dataFactura.Rows.Add(texNombre.Text);
             //dataFactura.Rows.Add(texDescr.Text);
             //dataFactura.Rows.Add(texPrecio.Text);
@@ -74,9 +77,31 @@ namespace Farmacia_Proyecto
             fila.Cells[1].Value = texNombre.Text;
             fila.Cells[2].Value = texDescr.Text;
             fila.Cells[3].Value = TBCantidad.Text;
-            fila.Cells[4].Value = texPrecio.Text;
+            fila.Cells[4].Value = double.Parse(texPrecio.Text) * double.Parse(TBCantidad.Text);
+
 
             dataFactura.Rows.Add(fila);
+
+            SumaColumna();
+
+
+        }
+
+        public void SumaColumna()
+        {
+            Double total = 0,iva = 0, suma = 0;
+
+            foreach ( DataGridViewRow row in dataFactura.Rows)
+            {
+                total += Convert.ToDouble(row.Cells["Precio"].Value);
+               
+            }
+            
+            TbSubTotal.Text = total.ToString();
+            iva = double.Parse(TbSubTotal.Text) * 0.15;
+            TBIVa.Text = iva.ToString();
+            suma = double.Parse(TbSubTotal.Text) + double.Parse(TBIVa.Text);
+            TBTotal.Text = suma.ToString();
 
         }
 
@@ -116,6 +141,7 @@ namespace Farmacia_Proyecto
 
         private void BFacturar_Click(object sender, EventArgs e)
         {
+
             SqlCommand agregar = new SqlCommand("exec sp_Ventas '@Id_produc', @CantidadComprada, '@Fecha_Venta'",conexion);
             conexion.Open();
 
@@ -152,6 +178,12 @@ namespace Farmacia_Proyecto
         private void TBCantidad_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            
         }
     }
 }
