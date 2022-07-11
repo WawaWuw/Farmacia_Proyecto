@@ -14,7 +14,7 @@ namespace Farmacia_Proyecto
     public partial class VentasR : Form
     {
         SqlConnection conexion = new SqlConnection("Server=DESKTOP-1LQHI27;database=Proyecto_Farmaci;integrated security=true");
-
+        
         public VentasR()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace Farmacia_Proyecto
         }
         public void ventas()
         {
-            string consulta = ("exec sp_Ventas '',@id_prod='" + texId_Pro.Text + "', @cantidadc=" + TBCantidad.Text + ",@fechav=''");
+            string consulta = ("exec sp_Ventas '',@id_prod='" + texId_Pro.Text + "', @cantidadc=" + TBCantidad.Text + ",@fechav='"+labelF.Text+"'");
             SqlCommand comando = new SqlCommand(consulta, conexion);
             comando.ExecuteNonQuery();
             conexion.Close();
@@ -53,8 +53,8 @@ namespace Farmacia_Proyecto
         private void VentasR_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'proyecto_FarmaciDataSet.Producto' Puede moverla o quitarla según sea necesario.
-      
-            labelF.Text = DateTime.Now.ToLongDateString();
+            DateTime f = DateTime.Today;
+            labelF.Text = f.ToShortDateString();
            
         }
 
