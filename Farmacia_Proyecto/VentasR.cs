@@ -157,7 +157,7 @@ namespace Farmacia_Proyecto
         }
 
         private void TBCantidad_TextChanged(object sender, EventArgs e)
-
+        { 
             sub = double.Parse(texPrecio.Text) * Int32.Parse(TBCantidad.Text);
             txtsubto.Text=sub.ToString();
             a = a + sub;           
