@@ -52,11 +52,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Busquedapro = new System.Windows.Forms.Button();
-            this.TBTotal = new System.Windows.Forms.TextBox();
+            this.txttotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.TbSubTotal = new System.Windows.Forms.TextBox();
+            this.txtsubto = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.TBIVa = new System.Windows.Forms.TextBox();
+            this.txtiva = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.BLimpiar = new System.Windows.Forms.Button();
             this.BBorrar = new System.Windows.Forms.Button();
@@ -68,13 +68,11 @@
             this.proyecto_FarmaciDataSet = new Farmacia_Proyecto.Proyecto_FarmaciDataSet();
             this.productoTableAdapter = new Farmacia_Proyecto.Proyecto_FarmaciDataSetTableAdapters.ProductoTableAdapter();
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
-            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.Agregado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataFactura)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyecto_FarmaciDataSet)).BeginInit();
-            this.fillByToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -113,6 +111,7 @@
             this.Precio});
             this.dataFactura.Location = new System.Drawing.Point(235, 164);
             this.dataFactura.Name = "dataFactura";
+            this.dataFactura.ReadOnly = true;
             this.dataFactura.Size = new System.Drawing.Size(543, 156);
             this.dataFactura.TabIndex = 6;
             // 
@@ -120,26 +119,31 @@
             // 
             this.ID_Producto.HeaderText = "ID Producto";
             this.ID_Producto.Name = "ID_Producto";
+            this.ID_Producto.ReadOnly = true;
             // 
             // NombreP
             // 
             this.NombreP.HeaderText = "Nombre";
             this.NombreP.Name = "NombreP";
+            this.NombreP.ReadOnly = true;
             // 
             // Descripcion
             // 
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
             // 
             // Cantidad
             // 
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
             // 
             // Precio
             // 
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
             // 
             // label3
             // 
@@ -262,12 +266,12 @@
             this.Busquedapro.UseVisualStyleBackColor = true;
             this.Busquedapro.Click += new System.EventHandler(this.BAgregarCarrito_Click);
             // 
-            // TBTotal
+            // txttotal
             // 
-            this.TBTotal.Location = new System.Drawing.Point(664, 393);
-            this.TBTotal.Name = "TBTotal";
-            this.TBTotal.Size = new System.Drawing.Size(100, 20);
-            this.TBTotal.TabIndex = 28;
+            this.txttotal.Location = new System.Drawing.Point(664, 393);
+            this.txttotal.Name = "txttotal";
+            this.txttotal.Size = new System.Drawing.Size(100, 20);
+            this.txttotal.TabIndex = 28;
             // 
             // label5
             // 
@@ -278,12 +282,12 @@
             this.label5.TabIndex = 27;
             this.label5.Text = "Total";
             // 
-            // TbSubTotal
+            // txtsubto
             // 
-            this.TbSubTotal.Location = new System.Drawing.Point(664, 333);
-            this.TbSubTotal.Name = "TbSubTotal";
-            this.TbSubTotal.Size = new System.Drawing.Size(100, 20);
-            this.TbSubTotal.TabIndex = 30;
+            this.txtsubto.Location = new System.Drawing.Point(664, 333);
+            this.txtsubto.Name = "txtsubto";
+            this.txtsubto.Size = new System.Drawing.Size(100, 20);
+            this.txtsubto.TabIndex = 30;
             // 
             // label9
             // 
@@ -294,12 +298,12 @@
             this.label9.TabIndex = 29;
             this.label9.Text = "Sub total";
             // 
-            // TBIVa
+            // txtiva
             // 
-            this.TBIVa.Location = new System.Drawing.Point(664, 362);
-            this.TBIVa.Name = "TBIVa";
-            this.TBIVa.Size = new System.Drawing.Size(100, 20);
-            this.TBIVa.TabIndex = 32;
+            this.txtiva.Location = new System.Drawing.Point(664, 362);
+            this.txtiva.Name = "txtiva";
+            this.txtiva.Size = new System.Drawing.Size(100, 20);
+            this.txtiva.TabIndex = 32;
             // 
             // label13
             // 
@@ -336,7 +340,6 @@
             this.BFacturar.TabIndex = 35;
             this.BFacturar.Text = "facturar";
             this.BFacturar.UseVisualStyleBackColor = true;
-            this.BFacturar.Click += new System.EventHandler(this.BFacturar_Click);
             // 
             // TBCantidad
             // 
@@ -344,7 +347,6 @@
             this.TBCantidad.Name = "TBCantidad";
             this.TBCantidad.Size = new System.Drawing.Size(100, 20);
             this.TBCantidad.TabIndex = 37;
-            this.TBCantidad.TextChanged += new System.EventHandler(this.TBCantidad_TextChanged);
             this.TBCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texId_Pro_KeyPress);
             // 
             // label14
@@ -388,21 +390,11 @@
             // 
             // fillByToolStrip
             // 
-            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fillByToolStripButton});
             this.fillByToolStrip.Location = new System.Drawing.Point(0, 0);
             this.fillByToolStrip.Name = "fillByToolStrip";
             this.fillByToolStrip.Size = new System.Drawing.Size(842, 25);
             this.fillByToolStrip.TabIndex = 40;
             this.fillByToolStrip.Text = "fillByToolStrip";
-            // 
-            // fillByToolStripButton
-            // 
-            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillByToolStripButton.Name = "fillByToolStripButton";
-            this.fillByToolStripButton.Size = new System.Drawing.Size(39, 22);
-            this.fillByToolStripButton.Text = "FillBy";
-            this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
             // 
             // Agregado
             // 
@@ -428,11 +420,11 @@
             this.Controls.Add(this.BFacturar);
             this.Controls.Add(this.BBorrar);
             this.Controls.Add(this.BLimpiar);
-            this.Controls.Add(this.TBIVa);
+            this.Controls.Add(this.txtiva);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.TbSubTotal);
+            this.Controls.Add(this.txtsubto);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.TBTotal);
+            this.Controls.Add(this.txttotal);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Busquedapro);
             this.Controls.Add(this.texPrecio);
@@ -454,8 +446,6 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proyecto_FarmaciDataSet)).EndInit();
-            this.fillByToolStrip.ResumeLayout(false);
-            this.fillByToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,11 +475,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button Busquedapro;
-        private System.Windows.Forms.TextBox TBTotal;
+        private System.Windows.Forms.TextBox txttotal;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TbSubTotal;
+        private System.Windows.Forms.TextBox txtsubto;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox TBIVa;
+        private System.Windows.Forms.TextBox txtiva;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button BLimpiar;
         private System.Windows.Forms.Button BBorrar;
@@ -501,7 +491,6 @@
         private System.Windows.Forms.BindingSource productoBindingSource;
         private Proyecto_FarmaciDataSetTableAdapters.ProductoTableAdapter productoTableAdapter;
         private System.Windows.Forms.ToolStrip fillByToolStrip;
-        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private System.Windows.Forms.Button Agregado;
     }
 }
