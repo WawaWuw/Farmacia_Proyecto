@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataFactura = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelF = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.ID_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.labelF = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.texPrecio = new System.Windows.Forms.TextBox();
             this.texDescr = new System.Windows.Forms.TextBox();
             this.texNombre = new System.Windows.Forms.TextBox();
@@ -50,7 +51,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.BAgregarCarrito = new System.Windows.Forms.Button();
+            this.Busquedapro = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -63,8 +64,17 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.proyecto_FarmaciDataSet = new Farmacia_Proyecto.Proyecto_FarmaciDataSet();
+            this.productoTableAdapter = new Farmacia_Proyecto.Proyecto_FarmaciDataSetTableAdapters.ProductoTableAdapter();
+            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
+            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.Agregado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataFactura)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyecto_FarmaciDataSet)).BeginInit();
+            this.fillByToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -101,10 +111,35 @@
             this.Descripcion,
             this.Cantidad,
             this.Precio});
-            this.dataFactura.Location = new System.Drawing.Point(221, 176);
+            this.dataFactura.Location = new System.Drawing.Point(235, 164);
             this.dataFactura.Name = "dataFactura";
-            this.dataFactura.Size = new System.Drawing.Size(543, 144);
+            this.dataFactura.Size = new System.Drawing.Size(543, 156);
             this.dataFactura.TabIndex = 6;
+            // 
+            // ID_Producto
+            // 
+            this.ID_Producto.HeaderText = "ID Producto";
+            this.ID_Producto.Name = "ID_Producto";
+            // 
+            // NombreP
+            // 
+            this.NombreP.HeaderText = "Nombre";
+            this.NombreP.Name = "NombreP";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
             // 
             // label3
             // 
@@ -151,31 +186,6 @@
             this.label7.Size = new System.Drawing.Size(10, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = ".";
-            // 
-            // ID_Producto
-            // 
-            this.ID_Producto.HeaderText = "ID Producto";
-            this.ID_Producto.Name = "ID_Producto";
-            // 
-            // NombreP
-            // 
-            this.NombreP.HeaderText = "Nombre";
-            this.NombreP.Name = "NombreP";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
             // 
             // texPrecio
             // 
@@ -241,14 +251,15 @@
             this.label12.TabIndex = 15;
             this.label12.Text = "ID_Producto";
             // 
-            // BAgregarCarrito
+            // Busquedapro
             // 
-            this.BAgregarCarrito.Location = new System.Drawing.Point(26, 382);
-            this.BAgregarCarrito.Name = "BAgregarCarrito";
-            this.BAgregarCarrito.Size = new System.Drawing.Size(67, 27);
-            this.BAgregarCarrito.TabIndex = 26;
-            this.BAgregarCarrito.Text = "Agregar";
-            this.BAgregarCarrito.UseVisualStyleBackColor = true;
+            this.Busquedapro.Location = new System.Drawing.Point(26, 382);
+            this.Busquedapro.Name = "Busquedapro";
+            this.Busquedapro.Size = new System.Drawing.Size(67, 27);
+            this.Busquedapro.TabIndex = 26;
+            this.Busquedapro.Text = "Buscar";
+            this.Busquedapro.UseVisualStyleBackColor = true;
+            this.Busquedapro.Click += new System.EventHandler(this.BAgregarCarrito_Click);
             // 
             // textBox4
             // 
@@ -309,7 +320,7 @@
             // 
             // BBorrar
             // 
-            this.BBorrar.Location = new System.Drawing.Point(93, 423);
+            this.BBorrar.Location = new System.Drawing.Point(29, 415);
             this.BBorrar.Name = "BBorrar";
             this.BBorrar.Size = new System.Drawing.Size(67, 27);
             this.BBorrar.TabIndex = 34;
@@ -357,12 +368,56 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Farmacia \"Lolita\"";
             // 
+            // productoBindingSource
+            // 
+            this.productoBindingSource.DataMember = "Producto";
+            this.productoBindingSource.DataSource = this.proyecto_FarmaciDataSet;
+            // 
+            // proyecto_FarmaciDataSet
+            // 
+            this.proyecto_FarmaciDataSet.DataSetName = "Proyecto_FarmaciDataSet";
+            this.proyecto_FarmaciDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productoTableAdapter
+            // 
+            this.productoTableAdapter.ClearBeforeFill = true;
+            // 
+            // fillByToolStrip
+            // 
+            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fillByToolStripButton});
+            this.fillByToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.fillByToolStrip.Name = "fillByToolStrip";
+            this.fillByToolStrip.Size = new System.Drawing.Size(842, 25);
+            this.fillByToolStrip.TabIndex = 40;
+            this.fillByToolStrip.Text = "fillByToolStrip";
+            // 
+            // fillByToolStripButton
+            // 
+            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByToolStripButton.Name = "fillByToolStripButton";
+            this.fillByToolStripButton.Size = new System.Drawing.Size(39, 22);
+            this.fillByToolStripButton.Text = "FillBy";
+            this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
+            // 
+            // Agregado
+            // 
+            this.Agregado.Location = new System.Drawing.Point(145, 418);
+            this.Agregado.Name = "Agregado";
+            this.Agregado.Size = new System.Drawing.Size(75, 23);
+            this.Agregado.TabIndex = 41;
+            this.Agregado.Text = "Agregar";
+            this.Agregado.UseVisualStyleBackColor = true;
+            this.Agregado.Click += new System.EventHandler(this.Agregado_Click);
+            // 
             // VentasR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(776, 462);
+            this.ClientSize = new System.Drawing.Size(842, 473);
+            this.Controls.Add(this.Agregado);
+            this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label14);
@@ -375,7 +430,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.BAgregarCarrito);
+            this.Controls.Add(this.Busquedapro);
             this.Controls.Add(this.texPrecio);
             this.Controls.Add(this.texDescr);
             this.Controls.Add(this.texNombre);
@@ -389,9 +444,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "VentasR";
             this.Text = "VentasR";
+            this.Load += new System.EventHandler(this.VentasR_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataFactura)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proyecto_FarmaciDataSet)).EndInit();
+            this.fillByToolStrip.ResumeLayout(false);
+            this.fillByToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,7 +480,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button BAgregarCarrito;
+        private System.Windows.Forms.Button Busquedapro;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox5;
@@ -433,5 +493,11 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox1;
+        private Proyecto_FarmaciDataSet proyecto_FarmaciDataSet;
+        private System.Windows.Forms.BindingSource productoBindingSource;
+        private Proyecto_FarmaciDataSetTableAdapters.ProductoTableAdapter productoTableAdapter;
+        private System.Windows.Forms.ToolStrip fillByToolStrip;
+        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
+        private System.Windows.Forms.Button Agregado;
     }
 }
