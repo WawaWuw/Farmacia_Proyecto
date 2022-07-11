@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TBCliente = new System.Windows.Forms.TextBox();
             this.dataFactura = new System.Windows.Forms.DataGridView();
             this.ID_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,11 +51,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Busquedapro = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.TBTotal = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.TbSubTotal = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.TBIVa = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.BLimpiar = new System.Windows.Forms.Button();
             this.BBorrar = new System.Windows.Forms.Button();
@@ -64,17 +63,9 @@
             this.TBCantidad = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.proyecto_FarmaciDataSet = new Farmacia_Proyecto.Proyecto_FarmaciDataSet();
-            this.productoTableAdapter = new Farmacia_Proyecto.Proyecto_FarmaciDataSetTableAdapters.ProductoTableAdapter();
-            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
-            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.Agregado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataFactura)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proyecto_FarmaciDataSet)).BeginInit();
-            this.fillByToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -95,12 +86,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Cliente:";
             // 
-            // textBox1
+            // TBCliente
             // 
-            this.textBox1.Location = new System.Drawing.Point(96, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.TBCliente.Location = new System.Drawing.Point(96, 79);
+            this.TBCliente.Name = "TBCliente";
+            this.TBCliente.Size = new System.Drawing.Size(100, 20);
+            this.TBCliente.TabIndex = 3;
             // 
             // dataFactura
             // 
@@ -111,7 +102,7 @@
             this.Descripcion,
             this.Cantidad,
             this.Precio});
-            this.dataFactura.Location = new System.Drawing.Point(235, 164);
+            this.dataFactura.Location = new System.Drawing.Point(221, 164);
             this.dataFactura.Name = "dataFactura";
             this.dataFactura.Size = new System.Drawing.Size(543, 156);
             this.dataFactura.TabIndex = 6;
@@ -144,7 +135,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(419, 33);
+            this.label3.Location = new System.Drawing.Point(393, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 13);
             this.label3.TabIndex = 7;
@@ -153,7 +144,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(419, 82);
+            this.label4.Location = new System.Drawing.Point(393, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 8;
@@ -162,7 +153,7 @@
             // labelF
             // 
             this.labelF.AutoSize = true;
-            this.labelF.Location = new System.Drawing.Point(466, 82);
+            this.labelF.Location = new System.Drawing.Point(440, 82);
             this.labelF.Name = "labelF";
             this.labelF.Size = new System.Drawing.Size(10, 13);
             this.labelF.TabIndex = 9;
@@ -189,28 +180,28 @@
             // 
             // texPrecio
             // 
-            this.texPrecio.Location = new System.Drawing.Point(112, 291);
+            this.texPrecio.Location = new System.Drawing.Point(106, 291);
             this.texPrecio.Name = "texPrecio";
             this.texPrecio.Size = new System.Drawing.Size(100, 20);
             this.texPrecio.TabIndex = 25;
             // 
             // texDescr
             // 
-            this.texDescr.Location = new System.Drawing.Point(112, 252);
+            this.texDescr.Location = new System.Drawing.Point(106, 252);
             this.texDescr.Name = "texDescr";
             this.texDescr.Size = new System.Drawing.Size(100, 20);
             this.texDescr.TabIndex = 23;
             // 
             // texNombre
             // 
-            this.texNombre.Location = new System.Drawing.Point(112, 215);
+            this.texNombre.Location = new System.Drawing.Point(106, 215);
             this.texNombre.Name = "texNombre";
             this.texNombre.Size = new System.Drawing.Size(100, 20);
             this.texNombre.TabIndex = 22;
             // 
             // texId_Pro
             // 
-            this.texId_Pro.Location = new System.Drawing.Point(112, 176);
+            this.texId_Pro.Location = new System.Drawing.Point(106, 176);
             this.texId_Pro.Name = "texId_Pro";
             this.texId_Pro.Size = new System.Drawing.Size(100, 20);
             this.texId_Pro.TabIndex = 21;
@@ -219,7 +210,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(26, 294);
+            this.label8.Location = new System.Drawing.Point(20, 294);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 19;
@@ -228,7 +219,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(26, 255);
+            this.label10.Location = new System.Drawing.Point(20, 255);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 13);
             this.label10.TabIndex = 17;
@@ -237,7 +228,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(26, 218);
+            this.label11.Location = new System.Drawing.Point(20, 218);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 13);
             this.label11.TabIndex = 16;
@@ -246,7 +237,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(26, 179);
+            this.label12.Location = new System.Drawing.Point(20, 179);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 13);
             this.label12.TabIndex = 15;
@@ -254,7 +245,7 @@
             // 
             // Busquedapro
             // 
-            this.Busquedapro.Location = new System.Drawing.Point(26, 382);
+            this.Busquedapro.Location = new System.Drawing.Point(29, 385);
             this.Busquedapro.Name = "Busquedapro";
             this.Busquedapro.Size = new System.Drawing.Size(67, 27);
             this.Busquedapro.TabIndex = 26;
@@ -262,49 +253,49 @@
             this.Busquedapro.UseVisualStyleBackColor = true;
             this.Busquedapro.Click += new System.EventHandler(this.BAgregarCarrito_Click);
             // 
-            // textBox4
+            // TBTotal
             // 
-            this.textBox4.Location = new System.Drawing.Point(664, 393);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 28;
+            this.TBTotal.Location = new System.Drawing.Point(664, 392);
+            this.TBTotal.Name = "TBTotal";
+            this.TBTotal.Size = new System.Drawing.Size(100, 20);
+            this.TBTotal.TabIndex = 28;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(612, 396);
+            this.label5.Location = new System.Drawing.Point(612, 395);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 27;
             this.label5.Text = "Total";
             // 
-            // textBox5
+            // TbSubTotal
             // 
-            this.textBox5.Location = new System.Drawing.Point(664, 333);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 30;
+            this.TbSubTotal.Location = new System.Drawing.Point(664, 332);
+            this.TbSubTotal.Name = "TbSubTotal";
+            this.TbSubTotal.Size = new System.Drawing.Size(100, 20);
+            this.TbSubTotal.TabIndex = 30;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(594, 336);
+            this.label9.Location = new System.Drawing.Point(594, 335);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(49, 13);
             this.label9.TabIndex = 29;
             this.label9.Text = "Sub total";
             // 
-            // textBox6
+            // TBIVa
             // 
-            this.textBox6.Location = new System.Drawing.Point(664, 362);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 32;
+            this.TBIVa.Location = new System.Drawing.Point(664, 361);
+            this.TBIVa.Name = "TBIVa";
+            this.TBIVa.Size = new System.Drawing.Size(100, 20);
+            this.TBIVa.TabIndex = 32;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(596, 365);
+            this.label13.Location = new System.Drawing.Point(596, 364);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(47, 13);
             this.label13.TabIndex = 31;
@@ -312,16 +303,17 @@
             // 
             // BLimpiar
             // 
-            this.BLimpiar.Location = new System.Drawing.Point(145, 382);
+            this.BLimpiar.Location = new System.Drawing.Point(146, 434);
             this.BLimpiar.Name = "BLimpiar";
-            this.BLimpiar.Size = new System.Drawing.Size(67, 27);
+            this.BLimpiar.Size = new System.Drawing.Size(75, 27);
             this.BLimpiar.TabIndex = 33;
             this.BLimpiar.Text = "Limpiar";
             this.BLimpiar.UseVisualStyleBackColor = true;
+            this.BLimpiar.Click += new System.EventHandler(this.BLimpiar_Click);
             // 
             // BBorrar
             // 
-            this.BBorrar.Location = new System.Drawing.Point(29, 415);
+            this.BBorrar.Location = new System.Drawing.Point(29, 434);
             this.BBorrar.Name = "BBorrar";
             this.BBorrar.Size = new System.Drawing.Size(67, 27);
             this.BBorrar.TabIndex = 34;
@@ -330,25 +322,27 @@
             // 
             // BFacturar
             // 
-            this.BFacturar.Location = new System.Drawing.Point(697, 423);
+            this.BFacturar.Location = new System.Drawing.Point(697, 434);
             this.BFacturar.Name = "BFacturar";
             this.BFacturar.Size = new System.Drawing.Size(67, 27);
             this.BFacturar.TabIndex = 35;
             this.BFacturar.Text = "facturar";
             this.BFacturar.UseVisualStyleBackColor = true;
+            this.BFacturar.Click += new System.EventHandler(this.BFacturar_Click);
             // 
             // TBCantidad
             // 
-            this.TBCantidad.Location = new System.Drawing.Point(112, 329);
+            this.TBCantidad.Location = new System.Drawing.Point(106, 329);
             this.TBCantidad.Name = "TBCantidad";
             this.TBCantidad.Size = new System.Drawing.Size(100, 20);
             this.TBCantidad.TabIndex = 37;
+            this.TBCantidad.TextChanged += new System.EventHandler(this.TBCantidad_TextChanged);
             this.TBCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texId_Pro_KeyPress);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(26, 332);
+            this.label14.Location = new System.Drawing.Point(20, 332);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 13);
             this.label14.TabIndex = 36;
@@ -359,54 +353,22 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.TBCliente);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.labelF);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(35, 26);
+            this.groupBox1.Location = new System.Drawing.Point(29, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(703, 132);
+            this.groupBox1.Size = new System.Drawing.Size(661, 132);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Farmacia \"Lolita\"";
             // 
-            // productoBindingSource
-            // 
-            this.productoBindingSource.DataMember = "Producto";
-            this.productoBindingSource.DataSource = this.proyecto_FarmaciDataSet;
-            // 
-            // proyecto_FarmaciDataSet
-            // 
-            this.proyecto_FarmaciDataSet.DataSetName = "Proyecto_FarmaciDataSet";
-            this.proyecto_FarmaciDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productoTableAdapter
-            // 
-            this.productoTableAdapter.ClearBeforeFill = true;
-            // 
-            // fillByToolStrip
-            // 
-            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fillByToolStripButton});
-            this.fillByToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.fillByToolStrip.Name = "fillByToolStrip";
-            this.fillByToolStrip.Size = new System.Drawing.Size(842, 25);
-            this.fillByToolStrip.TabIndex = 40;
-            this.fillByToolStrip.Text = "fillByToolStrip";
-            // 
-            // fillByToolStripButton
-            // 
-            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillByToolStripButton.Name = "fillByToolStripButton";
-            this.fillByToolStripButton.Size = new System.Drawing.Size(39, 22);
-            this.fillByToolStripButton.Text = "FillBy";
-            this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
-            // 
             // Agregado
             // 
-            this.Agregado.Location = new System.Drawing.Point(145, 418);
+            this.Agregado.Location = new System.Drawing.Point(146, 387);
             this.Agregado.Name = "Agregado";
-            this.Agregado.Size = new System.Drawing.Size(75, 23);
+            this.Agregado.Size = new System.Drawing.Size(75, 25);
             this.Agregado.TabIndex = 41;
             this.Agregado.Text = "Agregar";
             this.Agregado.UseVisualStyleBackColor = true;
@@ -417,20 +379,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(842, 473);
+            this.ClientSize = new System.Drawing.Size(770, 473);
             this.Controls.Add(this.Agregado);
-            this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.TBCantidad);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.BFacturar);
             this.Controls.Add(this.BBorrar);
             this.Controls.Add(this.BLimpiar);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.TBIVa);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.TbSubTotal);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.TBTotal);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Busquedapro);
             this.Controls.Add(this.texPrecio);
@@ -450,10 +411,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataFactura)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proyecto_FarmaciDataSet)).EndInit();
-            this.fillByToolStrip.ResumeLayout(false);
-            this.fillByToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,7 +419,7 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TBCliente;
         private System.Windows.Forms.DataGridView dataFactura;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -483,11 +440,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button Busquedapro;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox TBTotal;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox TbSubTotal;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox TBIVa;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button BLimpiar;
         private System.Windows.Forms.Button BBorrar;
@@ -495,11 +452,6 @@
         private System.Windows.Forms.TextBox TBCantidad;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox1;
-        private Proyecto_FarmaciDataSet proyecto_FarmaciDataSet;
-        private System.Windows.Forms.BindingSource productoBindingSource;
-        private Proyecto_FarmaciDataSetTableAdapters.ProductoTableAdapter productoTableAdapter;
-        private System.Windows.Forms.ToolStrip fillByToolStrip;
-        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private System.Windows.Forms.Button Agregado;
     }
 }

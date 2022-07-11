@@ -171,7 +171,12 @@ namespace Farmacia_Proyecto
             texDescr.Clear();
             texExis.Clear();
             texPrecio.Clear();
-            texVencimiento.Clear();
+           
+        }
+
+        private void dataProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
