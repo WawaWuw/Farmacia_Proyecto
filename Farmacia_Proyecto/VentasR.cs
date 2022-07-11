@@ -75,10 +75,7 @@ namespace Farmacia_Proyecto
             fila.Cells[2].Value = texDescr.Text;
             fila.Cells[3].Value = texPrecio.Text;
             fila.Cells[4].Value = TBCantidad.Text;
-
             dataFactura.Rows.Add(fila);
-
-            DataGridViewRow fila = new DataGridViewRow();
             fila.CreateCells(dataFactura);
             fila.Cells[0].Value = texId_Pro.Text;
             fila.Cells[1].Value = texNombre.Text;
@@ -160,47 +157,12 @@ namespace Farmacia_Proyecto
         }
 
         private void TBCantidad_TextChanged(object sender, EventArgs e)
-
-            sub = double.Parse(texPrecio.Text) * Int32.Parse(TBCantidad.Text);
-            txtsubto.Text=sub.ToString();
-            a = a + sub;           
-            txtsubto.Text = a.ToString();
-
+        { 
+            
         }
 
-        private void texId_Pro_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            conexion.Open();
-            string consulta = "SELECT * FROM Producto WHERE ID_Prod='" + texId_Pro.Text + "'";
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            SqlDataReader registro = comando.ExecuteReader();
-            if (registro.Read())
-            {
-                texNombre.Text = registro["Nombre"].ToString();
-                texDescr.Text = registro["Descripcion"].ToString();
-                texPrecio.Text = registro["Precio"].ToString();
-            }
-            conexion.Close();
+  
 
-        }
-
-        private void TBCantidad_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            DataGridViewRow fila = new DataGridViewRow();
-            fila.CreateCells(dataFactura);
-            fila.Cells[0].Value = texId_Pro.Text;
-            fila.Cells[1].Value = texNombre.Text;
-            fila.Cells[2].Value = texDescr.Text;
-            fila.Cells[3].Value = texPrecio.Text;
-            fila.Cells[4].Value = TBCantidad.Text;
-
-            dataFactura.Rows.Add(fila);
-        }
-
-        private void TBCantidad_KeyDown(object sender, KeyEventArgs e)
-
-        {
-
-        }
+        
     }
 }

@@ -218,7 +218,6 @@
             this.texId_Pro.Name = "texId_Pro";
             this.texId_Pro.Size = new System.Drawing.Size(100, 20);
             this.texId_Pro.TabIndex = 21;
-            this.texId_Pro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texId_Pro_KeyPress);
             // 
             // label8
             // 
@@ -347,7 +346,6 @@
             this.TBCantidad.Name = "TBCantidad";
             this.TBCantidad.Size = new System.Drawing.Size(100, 20);
             this.TBCantidad.TabIndex = 37;
-            this.TBCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texId_Pro_KeyPress);
             // 
             // label14
             // 
