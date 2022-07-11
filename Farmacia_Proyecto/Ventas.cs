@@ -31,5 +31,44 @@ namespace Farmacia_Proyecto
             llenar_tabla();
 
         }
+
+        private void Busqueda_Click(object sender, EventArgs e)
+        {
+            conexion.Open();
+            if (Radioid.Checked == false && Radioarti.Checked == false)
+            {
+                MessageBox.Show("Escoja un metodo de busqueda");
+            }
+            else
+            {
+                if (Radioid.Checked == true)
+                {
+                    string consulta = "SELECT * FROM Ventas WHERE ID_Ventas  =" + texBusqueda.Text + "";
+                    SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion);
+                    DataTable dt = new DataTable();
+                    adaptador.Fill(dt);
+                    dataVentas.DataSource = dt;
+                    SqlCommand comando = new SqlCommand(consulta, conexion);
+                    SqlDataReader lector;
+                    lector = comando.ExecuteReader();
+
+
+                }
+                if (Radioarti.Checked == true)
+                {
+                    string consulta = "SELECT * FROM Ventas WHERE ID_Produc = '" + texBusqueda.Text + "'";
+                    SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion);
+                    DataTable dt = new DataTable();
+                    adaptador.Fill(dt);
+                    dataVentas.DataSource = dt;
+                    SqlCommand comando = new SqlCommand(consulta, conexion);
+                    SqlDataReader lector;
+                    lector = comando.ExecuteReader();
+
+                }
+
+            }
+            conexion.Close();
+        }
     }
 }

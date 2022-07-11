@@ -93,10 +93,58 @@ namespace Farmacia_Proyecto
 
         private void button2_Click(object sender, EventArgs e)
         {
+            labelid.Text = "";
             txtapellido.Clear();
             txtNom.Clear();
             txttelefono.Clear();
             textDirec.Clear();
+        }
+
+        private void Busqueda_Click(object sender, EventArgs e)
+        {
+            conexion.Open();
+            if (Radioid.Checked == false &&  RadioNom.Checked == false)
+            {
+                MessageBox.Show("Escoja un metodo de busqueda");
+            }
+            else
+            {
+                if (Radioid.Checked == true)
+                {
+                    string consulta = "SELECT * FROM cliente WHERE ID_Cliente =" +texBusqueda.Text+ "";
+                    SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion);
+                    DataTable dt = new DataTable();
+                    adaptador.Fill(dt);
+                    dataClie.DataSource = dt;
+                    SqlCommand comando = new SqlCommand(consulta, conexion);
+                    SqlDataReader lector;
+                    lector = comando.ExecuteReader();
+                    
+
+                }
+                if (RadioNom.Checked == true)
+                {
+                    string consulta = "SELECT * FROM cliente WHERE Nombre = '" +texBusqueda.Text+ "'";
+                    SqlDataAdapter adaptador = new SqlDataAdapter(consulta, conexion);
+                    DataTable dt = new DataTable();
+                    adaptador.Fill(dt);
+                    dataClie.DataSource = dt;
+                    SqlCommand comando = new SqlCommand(consulta, conexion);
+                    SqlDataReader lector;
+                    lector = comando.ExecuteReader();
+
+                }
+                
+            }
+            conexion.Close();
+        }
+
+        private void Refresf_Click(object sender, EventArgs e)
+        {
+            llenar_tabla();
+            Radioid.Checked = false;
+            RadioNom.Checked = false;  
+            texBusqueda.Clear();    
         }
     }
 }
