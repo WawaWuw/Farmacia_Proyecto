@@ -28,20 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dataVentas = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataVentas)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dataVentas
+            // 
+            this.dataVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataVentas.Location = new System.Drawing.Point(74, 77);
+            this.dataVentas.Name = "dataVentas";
+            this.dataVentas.Size = new System.Drawing.Size(432, 219);
+            this.dataVentas.TabIndex = 0;
             // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 344);
+            this.Controls.Add(this.dataVentas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Ventas";
             this.Text = "Ventas";
+            this.Load += new System.EventHandler(this.Ventas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataVentas)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dataVentas;
     }
 }

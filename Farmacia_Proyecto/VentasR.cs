@@ -24,6 +24,13 @@ namespace Farmacia_Proyecto
         {
            
         }
+        public void ventas()
+        {
+            string consulta = ("exec sp_Ventas '',@id_prod='" + texId_Pro.Text + "', @cantidadc=" + TBCantidad.Text + ",@fechav=''");
+            SqlCommand comando = new SqlCommand(consulta, conexion);
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
        
         private void BAgregarCarrito_Click(object sender, EventArgs e)
         {
@@ -46,7 +53,7 @@ namespace Farmacia_Proyecto
         private void VentasR_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'proyecto_FarmaciDataSet.Producto' Puede moverla o quitarla según sea necesario.
-            this.productoTableAdapter.Fill(this.proyecto_FarmaciDataSet.Producto);
+      
             labelF.Text = DateTime.Now.ToLongDateString();
            
         }
@@ -135,35 +142,8 @@ namespace Farmacia_Proyecto
         private void BFacturar_Click(object sender, EventArgs e)
         {
 
-            SqlCommand agregar = new SqlCommand("exec sp_Ventas '@Id_produc', @CantidadComprada, '@Fecha_Venta'",conexion);
             conexion.Open();
-
-            try
-            {
-                foreach (DataGridViewRow row in dataFactura.Rows)
-                {
-                    agregar.Parameters.Clear();
-
-                    agregar.Parameters.AddWithValue("@Id_Produc", Convert.ToString(row.Cells["ID_Producto"].Value));
-                    agregar.Parameters.AddWithValue("@CantidadComprada", Convert.ToString(row.Cells["Cantidad"].Value));
-                    
-
-                    agregar.ExecuteNonQuery();
-
-                }
-                agregar.Parameters.AddWithValue("@Fecha_Venta", Convert.ToString(labelF.Text));
-                MessageBox.Show("Datos Agregados. ");
-
-            }
-       catch(Exception ex)
-
-            {
-                MessageBox.Show("Error al agregarrr");
-            }
-            finally
-            {
-                conexion.Close();
-            }
+            ventas();
 
 
         }
