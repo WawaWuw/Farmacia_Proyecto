@@ -59,7 +59,7 @@ namespace Farmacia_Proyecto
 
         private void Agregado_Click(object sender, EventArgs e)
         {
-            double n;
+           
             //dataFactura.Rows.Add(texNombre.Text);
             //dataFactura.Rows.Add(texDescr.Text);
             //dataFactura.Rows.Add(texPrecio.Text);
@@ -134,38 +134,31 @@ namespace Farmacia_Proyecto
 
         private void BFacturar_Click(object sender, EventArgs e)
         {
-
-            SqlCommand agregar = new SqlCommand("exec sp_Ventas '@Id_produc', @CantidadComprada, '@Fecha_Venta'",conexion);
-            conexion.Open();
-
             try
             {
-                foreach (DataGridViewRow row in dataFactura.Rows)
+                int c;
+                string consulta = "exec sp_Ventas '@Id_produc', @CantidadComprada,'@Fecha_Venta'";
+                conexion.Open();
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@Id_Produc", dataFactura.Rows[0].Index);
+                comando.Parameters.AddWithValue("@Fecha_Venta", dataFactura.Rows[4].Index);
+                comando.Parameters.AddWithValue("@Fecha_Venta", labelF.Text);
+
+                c = comando.ExecuteNonQuery();
+                if (c > 0)
                 {
-                    agregar.Parameters.Clear();
-
-                    agregar.Parameters.AddWithValue("@Id_Produc", Convert.ToString(row.Cells["ID_Producto"].Value));
-                    agregar.Parameters.AddWithValue("@CantidadComprada", Convert.ToString(row.Cells["Cantidad"].Value));
-                    
-
-                    agregar.ExecuteNonQuery();
-
+                    MessageBox.Show("Facturado con exito", "Informacion");
                 }
-                agregar.Parameters.AddWithValue("@Fecha_Venta", Convert.ToString(labelF.Text));
-                MessageBox.Show("Datos Agregados. ");
-
+                else
+                {
+                    MessageBox.Show("Error al Facturar", "Informacion");
+                }
+           
             }
-       catch(Exception ex)
-
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al agregarrr");
+                MessageBox.Show(ex.Message);
             }
-            finally
-            {
-                conexion.Close();
-            }
-
-
         }
 
         private void TBCantidad_TextChanged(object sender, EventArgs e)
