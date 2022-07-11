@@ -336,6 +336,7 @@
             this.BFacturar.TabIndex = 35;
             this.BFacturar.Text = "facturar";
             this.BFacturar.UseVisualStyleBackColor = true;
+            this.BFacturar.Click += new System.EventHandler(this.BFacturar_Click);
             // 
             // TBCantidad
             // 
@@ -343,6 +344,7 @@
             this.TBCantidad.Name = "TBCantidad";
             this.TBCantidad.Size = new System.Drawing.Size(100, 20);
             this.TBCantidad.TabIndex = 37;
+            this.TBCantidad.TextChanged += new System.EventHandler(this.TBCantidad_TextChanged);
             this.TBCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texId_Pro_KeyPress);
             // 
             // label14

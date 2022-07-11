@@ -191,6 +191,7 @@
             this.dataProducto.Size = new System.Drawing.Size(349, 188);
             this.dataProducto.TabIndex = 15;
             this.dataProducto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProducto_CellClick);
+            this.dataProducto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProducto_CellContentClick);
             // 
             // Busqueda
             // 

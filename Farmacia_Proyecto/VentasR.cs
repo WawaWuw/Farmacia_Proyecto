@@ -73,8 +73,8 @@ namespace Farmacia_Proyecto
             fila.Cells[0].Value = texId_Pro.Text;
             fila.Cells[1].Value = texNombre.Text;
             fila.Cells[2].Value = texDescr.Text;
-            fila.Cells[3].Value = texPrecio.Text;
-            fila.Cells[4].Value = TBCantidad.Text;
+            fila.Cells[3].Value = TBCantidad.Text;
+            fila.Cells[4].Value = texPrecio.Text;
 
             dataFactura.Rows.Add(fila);
 
@@ -82,34 +82,74 @@ namespace Farmacia_Proyecto
 
         private void texId_Pro_KeyPress(object sender, KeyPressEventArgs e)
         {
-            conexion.Open();
-            string consulta = "SELECT * FROM Producto WHERE ID_Prod='" + texId_Pro.Text + "'";
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            SqlDataReader registro = comando.ExecuteReader();
-            if (registro.Read())
-            {
-                texNombre.Text = registro["Nombre"].ToString();
-                texDescr.Text = registro["Descripcion"].ToString();
-                texPrecio.Text = registro["Precio"].ToString();
-            }
-            conexion.Close();
+            //conexion.Open();
+            //string consulta = "SELECT * FROM Producto WHERE ID_Prod='" + texId_Pro.Text + "'";
+            //SqlCommand comando = new SqlCommand(consulta, conexion);
+            //SqlDataReader registro = comando.ExecuteReader();
+            //if (registro.Read())
+            //{
+            //    texNombre.Text = registro["Nombre"].ToString();
+            //    texDescr.Text = registro["Descripcion"].ToString();
+            //    texPrecio.Text = registro["Precio"].ToString();
+            //}
+            //conexion.Close();
 
         }
 
         private void TBCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            DataGridViewRow fila = new DataGridViewRow();
-            fila.CreateCells(dataFactura);
-            fila.Cells[0].Value = texId_Pro.Text;
-            fila.Cells[1].Value = texNombre.Text;
-            fila.Cells[2].Value = texDescr.Text;
-            fila.Cells[3].Value = texPrecio.Text;
-            fila.Cells[4].Value = TBCantidad.Text;
+            //DataGridViewRow fila = new DataGridViewRow();
+            //fila.CreateCells(dataFactura);
+            //fila.Cells[0].Value = texId_Pro.Text;
+            //fila.Cells[1].Value = texNombre.Text;
+            //fila.Cells[2].Value = texDescr.Text;
+            //fila.Cells[3].Value = TBCantidad.Text;
+            //fila.Cells[4].Value = texPrecio.Text;
 
-            dataFactura.Rows.Add(fila);
+            //dataFactura.Rows.Add(fila);
         }
 
         private void TBCantidad_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void BFacturar_Click(object sender, EventArgs e)
+        {
+            SqlCommand agregar = new SqlCommand("exec sp_Ventas '@Id_produc', @CantidadComprada, '@Fecha_Venta'",conexion);
+            conexion.Open();
+
+            try
+            {
+                foreach (DataGridViewRow row in dataFactura.Rows)
+                {
+                    agregar.Parameters.Clear();
+
+                    agregar.Parameters.AddWithValue("@Id_Produc", Convert.ToString(row.Cells["ID_Producto"].Value));
+                    agregar.Parameters.AddWithValue("@CantidadComprada", Convert.ToString(row.Cells["Cantidad"].Value));
+                    
+
+                    agregar.ExecuteNonQuery();
+
+                }
+                agregar.Parameters.AddWithValue("@Fecha_Venta", Convert.ToString(labelF.Text));
+                MessageBox.Show("Datos Agregados. ");
+
+            }
+       catch(Exception ex)
+
+            {
+                MessageBox.Show("Error al agregarrr");
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+
+        }
+
+        private void TBCantidad_TextChanged(object sender, EventArgs e)
         {
 
         }
