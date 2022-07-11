@@ -45,6 +45,7 @@ namespace Farmacia_Proyecto
             // TODO: esta línea de código carga datos en la tabla 'proyecto_FarmaciDataSet.Producto' Puede moverla o quitarla según sea necesario.
           
             labelF.Text = DateTime.Now.ToLongDateString();
+           
         }
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
@@ -67,10 +68,49 @@ namespace Farmacia_Proyecto
             //dataFactura.Rows.Add(texDescr.Text);
             //dataFactura.Rows.Add(texPrecio.Text);
 
-            dataFactura.Columns.Add("ID Producto",texPrecio.Text);
-            dataFactura.Columns.Add("Nombre", texNombre.Text);
+            DataGridViewRow fila = new DataGridViewRow();
+            fila.CreateCells(dataFactura);
+            fila.Cells[0].Value = texId_Pro.Text;
+            fila.Cells[1].Value = texNombre.Text;
+            fila.Cells[2].Value = texDescr.Text;
+            fila.Cells[3].Value = texPrecio.Text;
+            fila.Cells[4].Value = TBCantidad.Text;
 
-            
+            dataFactura.Rows.Add(fila);
+
+        }
+
+        private void texId_Pro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            conexion.Open();
+            string consulta = "SELECT * FROM Producto WHERE ID_Prod='" + texId_Pro.Text + "'";
+            SqlCommand comando = new SqlCommand(consulta, conexion);
+            SqlDataReader registro = comando.ExecuteReader();
+            if (registro.Read())
+            {
+                texNombre.Text = registro["Nombre"].ToString();
+                texDescr.Text = registro["Descripcion"].ToString();
+                texPrecio.Text = registro["Precio"].ToString();
+            }
+            conexion.Close();
+
+        }
+
+        private void TBCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            DataGridViewRow fila = new DataGridViewRow();
+            fila.CreateCells(dataFactura);
+            fila.Cells[0].Value = texId_Pro.Text;
+            fila.Cells[1].Value = texNombre.Text;
+            fila.Cells[2].Value = texDescr.Text;
+            fila.Cells[3].Value = texPrecio.Text;
+            fila.Cells[4].Value = TBCantidad.Text;
+
+            dataFactura.Rows.Add(fila);
+        }
+
+        private void TBCantidad_KeyDown(object sender, KeyEventArgs e)
+        {
 
         }
     }

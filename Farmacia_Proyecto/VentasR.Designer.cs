@@ -61,7 +61,7 @@
             this.BLimpiar = new System.Windows.Forms.Button();
             this.BBorrar = new System.Windows.Forms.Button();
             this.BFacturar = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TBCantidad = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.productoBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -214,6 +214,7 @@
             this.texId_Pro.Name = "texId_Pro";
             this.texId_Pro.Size = new System.Drawing.Size(100, 20);
             this.texId_Pro.TabIndex = 21;
+            this.texId_Pro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texId_Pro_KeyPress);
             // 
             // label8
             // 
@@ -336,12 +337,13 @@
             this.BFacturar.Text = "facturar";
             this.BFacturar.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // TBCantidad
             // 
-            this.textBox2.Location = new System.Drawing.Point(112, 329);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 37;
+            this.TBCantidad.Location = new System.Drawing.Point(112, 329);
+            this.TBCantidad.Name = "TBCantidad";
+            this.TBCantidad.Size = new System.Drawing.Size(100, 20);
+            this.TBCantidad.TabIndex = 37;
+            this.TBCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texId_Pro_KeyPress);
             // 
             // label14
             // 
@@ -419,7 +421,7 @@
             this.Controls.Add(this.Agregado);
             this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.TBCantidad);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.BFacturar);
             this.Controls.Add(this.BBorrar);
@@ -490,7 +492,7 @@
         private System.Windows.Forms.Button BLimpiar;
         private System.Windows.Forms.Button BBorrar;
         private System.Windows.Forms.Button BFacturar;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TBCantidad;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox1;
         private Proyecto_FarmaciDataSet proyecto_FarmaciDataSet;
