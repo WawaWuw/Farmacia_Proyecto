@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TBCliente = new System.Windows.Forms.TextBox();
@@ -64,8 +65,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Agregado = new System.Windows.Forms.Button();
+            this.errorcito = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataFactura)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorcito)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -374,6 +377,10 @@
             this.Agregado.UseVisualStyleBackColor = true;
             this.Agregado.Click += new System.EventHandler(this.Agregado_Click);
             // 
+            // errorcito
+            // 
+            this.errorcito.ContainerControl = this;
+            // 
             // VentasR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,6 +418,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataFactura)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorcito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,5 +461,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button Agregado;
+        private System.Windows.Forms.ErrorProvider errorcito;
     }
 }

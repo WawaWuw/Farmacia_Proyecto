@@ -142,37 +142,26 @@ namespace Farmacia_Proyecto
         private void BFacturar_Click(object sender, EventArgs e)
         {
 
-            try
+            SqlCommand cmd = new SqlCommand("sp_Ventas", conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id_Venta", ""));
+            cmd.Parameters.Add(new SqlParameter("@id_Prod", SqlDbType.VarChar, 50));
+            cmd.Parameters.Add(new SqlParameter("@cantidadc", SqlDbType.Int));
+            cmd.Parameters.Add(new SqlParameter("@fechaV", SqlDbType.Date));
+            conexion.Open();
+
+            foreach (DataGridViewRow row in dataFactura.Rows)
             {
-                SqlCommand cmd = new SqlCommand("sp_Ventas", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-
-                cmd.Parameters.Add(new SqlParameter("@id_Venta", ""));
-
-                cmd.Parameters.Add(new SqlParameter("@id_Prod", SqlDbType.VarChar, 50));
-
-                cmd.Parameters.Add(new SqlParameter("@cantidadc", SqlDbType.Int));
-
-                cmd.Parameters.Add(new SqlParameter("@fechaV", SqlDbType.Date));
-                conexion.Open();
-
-                foreach (DataGridViewRow row in dataFactura.Rows)
+                if (!row.IsNewRow)
                 {
-                    if (!row.IsNewRow)
-                    {
-                        cmd.Parameters["@id_Prod"].Value = row.Cells[0].Value;
-                        cmd.Parameters["@CantidadC"].Value = row.Cells[3].Value;
+                    cmd.Parameters["@id_Prod"].Value = row.Cells[0].Value;
+                    cmd.Parameters["@CantidadC"].Value = row.Cells[3].Value;
 
-                    }
-                    cmd.Parameters["@Fechav"].Value = labelF.Text;
-                    cmd.ExecuteNonQuery();
                 }
+
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            cmd.Parameters["@Fechav"].Value = labelF.Text;
+            cmd.ExecuteNonQuery();
 
 
         }
