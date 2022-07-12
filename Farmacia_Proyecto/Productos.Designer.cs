@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Agregar = new System.Windows.Forms.Button();
             this.Modificar = new System.Windows.Forms.Button();
             this.Eliminar = new System.Windows.Forms.Button();
@@ -52,7 +53,9 @@
             this.radioExis = new System.Windows.Forms.RadioButton();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.errorcito = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataProducto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorcito)).BeginInit();
             this.SuspendLayout();
             // 
             // Agregar
@@ -272,6 +275,10 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // errorcito
+            // 
+            this.errorcito.ContainerControl = this;
+            // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +313,7 @@
             this.Text = "Productos";
             this.Load += new System.EventHandler(this.Productos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataProducto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorcito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,5 +345,6 @@
         private System.Windows.Forms.RadioButton radioExis;
         private System.Windows.Forms.Button btnRefrescar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.ErrorProvider errorcito;
     }
 }

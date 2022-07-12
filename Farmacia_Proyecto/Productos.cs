@@ -18,6 +18,63 @@ namespace Farmacia_Proyecto
             InitializeComponent();
         }
         SqlConnection conexion = new SqlConnection("Server = DESKTOP-1LQHI27;database=Proyecto_Farmaci;integrated security=true");
+       
+        public bool confirmacion()
+        {
+            bool ok = true;
+
+            if (texId_Pro.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texId_Pro, "Ingresar ID");
+            }
+              
+            if (texNombre.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texNombre, "Ingresar Nombre");
+            }
+        
+            if (texDescr.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texDescr, "Ingresar descripcion");
+            }
+                        
+            if (texExis.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texExis, "Ingresar existencia");
+            }
+            
+            if (texPrecio.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texPrecio, "Ingresar precio");
+            }
+           
+            if (texVencimiento.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texVencimiento, "Ingresar vencimiento");
+            }
+           
+           
+
+            return ok;
+
+        }
+        
+        public void borrarerror()
+        {
+            errorcito.SetError(texId_Pro,"");
+            errorcito.SetError(texNombre, "");
+            errorcito.SetError(texDescr, "");
+            errorcito.SetError(texExis, "");
+            errorcito.SetError(texPrecio, "");
+            errorcito.SetError(texVencimiento, "");
+        }
+        
         public void llenar_tabla()
         {
             string consulta = "select * from Producto";
@@ -48,20 +105,28 @@ namespace Farmacia_Proyecto
 
         private void Agregar_Click(object sender, EventArgs e)
         {
-            string consulta = "INSERT INTO Producto (ID_Prod,Nombre,Descripcion,Existencia,Precio,FechaVenci) values(@id,@nombre,@descripcion,@existencia,@precio,@fechaVen)";
-            conexion.Open();
-            SqlCommand comando = new SqlCommand(consulta,conexion);
-            comando.Parameters.AddWithValue("@id",texId_Pro.Text);
-            comando.Parameters.AddWithValue("@nombre", texNombre.Text);
-            comando.Parameters.AddWithValue("@descripcion", texDescr.Text);
-            comando.Parameters.AddWithValue("@existencia", texExis.Text);
-            comando.Parameters.AddWithValue("@precio", texPrecio.Text);
-            comando.Parameters.AddWithValue("@fechaVen", texVencimiento.Text);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Reguistro agregado");
-            llenar_tabla();
-            Limpieza();
-            conexion.Close();
+            borrarerror();
+            if (confirmacion())
+            {
+                string consulta = "INSERT INTO Producto (ID_Prod,Nombre,Descripcion,Existencia,Precio,FechaVenci) values(@id,@nombre,@descripcion,@existencia,@precio,@fechaVen)";
+                conexion.Open();
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@id", texId_Pro.Text);
+                comando.Parameters.AddWithValue("@nombre", texNombre.Text);
+                comando.Parameters.AddWithValue("@descripcion", texDescr.Text);
+                comando.Parameters.AddWithValue("@existencia", texExis.Text);
+                comando.Parameters.AddWithValue("@precio", texPrecio.Text);
+                comando.Parameters.AddWithValue("@fechaVen", texVencimiento.Text);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Reguistro agregado");
+                llenar_tabla();
+                Limpieza();
+                conexion.Close();
+
+            }
+            else
+                MessageBox.Show("Ingrese valores");
+           
         }
 
         private void dataProducto_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -76,34 +141,57 @@ namespace Farmacia_Proyecto
 
         private void Eliminar_Click(object sender, EventArgs e)
         {
-            conexion.Open();
-            string consulta = "DELETE FROM Producto WHERE ID_Prod = @Id ";
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            comando.Parameters.AddWithValue("@Id", texId_Pro.Text);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Reguistro eleminado"); 
-            llenar_tabla();
-            Limpieza();
-            conexion.Close();
-        
+            bool ok = true;
+            borrarerror();
+            if (texId_Pro.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texId_Pro, "Ingresar ID");
+            }
+            else
+            {
+                conexion.Open();
+                string consulta = "DELETE FROM Producto WHERE ID_Prod = @Id ";
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@Id", texId_Pro.Text);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Reguistro eleminado");
+                llenar_tabla();
+                Limpieza();
+                conexion.Close();
+
+            }
+          
         }
 
         private void Modificar_Click(object sender, EventArgs e)
         {
-            string consulta = "UPDATE Producto SET Nombre = @nombre ,Descripcion= @descripcion,Existencia= @existencia,Precio= @precio,FechaVenci= @fechaVen WHERE ID_Prod=@id";
-            conexion.Open();
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            comando.Parameters.AddWithValue("@id", texId_Pro.Text);
-            comando.Parameters.AddWithValue("@nombre", texNombre.Text);
-            comando.Parameters.AddWithValue("@descripcion", texDescr.Text);
-            comando.Parameters.AddWithValue("@existencia", texExis.Text);
-            comando.Parameters.AddWithValue("@precio", texPrecio.Text);
-            comando.Parameters.AddWithValue("@fechaVen", texVencimiento.Text);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Registro actualizado");
-            llenar_tabla();
-            Limpieza();
-            conexion.Close();
+
+            bool ok = true;
+            borrarerror();
+            if (texId_Pro.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texId_Pro, "Ingresar ID");
+            }
+            else
+            {
+                string consulta = "UPDATE Producto SET Nombre = @nombre ,Descripcion= @descripcion,Existencia= @existencia,Precio= @precio,FechaVenci= @fechaVen WHERE ID_Prod=@id";
+                conexion.Open();
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@id", texId_Pro.Text);
+                comando.Parameters.AddWithValue("@nombre", texNombre.Text);
+                comando.Parameters.AddWithValue("@descripcion", texDescr.Text);
+                comando.Parameters.AddWithValue("@existencia", texExis.Text);
+                comando.Parameters.AddWithValue("@precio", texPrecio.Text);
+                comando.Parameters.AddWithValue("@fechaVen", texVencimiento.Text);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Registro actualizado");
+                llenar_tabla();
+                Limpieza();
+                conexion.Close();
+            }
+           
         }
 
         private void Busqueda_Click(object sender, EventArgs e)
@@ -171,6 +259,7 @@ namespace Farmacia_Proyecto
             texDescr.Clear();
             texExis.Clear();
             texPrecio.Clear();
+            texVencimiento.Clear();
            
         }
 
