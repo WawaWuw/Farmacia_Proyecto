@@ -48,7 +48,7 @@
             // 
             // PanelMenu
             // 
-            this.PanelMenu.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.PanelMenu.BackColor = System.Drawing.Color.LightSalmon;
             this.PanelMenu.Controls.Add(this.VentaRea);
             this.PanelMenu.Controls.Add(this.BtnEmpleado);
             this.PanelMenu.Controls.Add(this.BtnCliente);
@@ -66,6 +66,7 @@
             this.VentaRea.Dock = System.Windows.Forms.DockStyle.Top;
             this.VentaRea.FlatAppearance.BorderSize = 0;
             this.VentaRea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VentaRea.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VentaRea.Location = new System.Drawing.Point(0, 235);
             this.VentaRea.Name = "VentaRea";
             this.VentaRea.Size = new System.Drawing.Size(200, 40);
@@ -79,6 +80,7 @@
             this.BtnEmpleado.Dock = System.Windows.Forms.DockStyle.Top;
             this.BtnEmpleado.FlatAppearance.BorderSize = 0;
             this.BtnEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEmpleado.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEmpleado.Location = new System.Drawing.Point(0, 195);
             this.BtnEmpleado.Name = "BtnEmpleado";
             this.BtnEmpleado.Size = new System.Drawing.Size(200, 40);
@@ -92,6 +94,7 @@
             this.BtnCliente.Dock = System.Windows.Forms.DockStyle.Top;
             this.BtnCliente.FlatAppearance.BorderSize = 0;
             this.BtnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCliente.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCliente.Location = new System.Drawing.Point(0, 155);
             this.BtnCliente.Name = "BtnCliente";
             this.BtnCliente.Size = new System.Drawing.Size(200, 40);
@@ -105,6 +108,7 @@
             this.btnVentas.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnVentas.FlatAppearance.BorderSize = 0;
             this.btnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVentas.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVentas.Location = new System.Drawing.Point(0, 115);
             this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(200, 40);
@@ -118,6 +122,7 @@
             this.btn_Producto.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_Producto.FlatAppearance.BorderSize = 0;
             this.btn_Producto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Producto.Font = new System.Drawing.Font("Georgia", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Producto.Location = new System.Drawing.Point(0, 75);
             this.btn_Producto.Name = "btn_Producto";
             this.btn_Producto.Size = new System.Drawing.Size(200, 40);
@@ -148,7 +153,7 @@
             // 
             // Panelcontenedor
             // 
-            this.Panelcontenedor.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Panelcontenedor.BackColor = System.Drawing.Color.DarkGray;
             this.Panelcontenedor.Controls.Add(this.pictureBox1);
             this.Panelcontenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panelcontenedor.Location = new System.Drawing.Point(200, 0);

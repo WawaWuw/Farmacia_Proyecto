@@ -19,10 +19,59 @@ namespace Farmacia_Proyecto
         {
             InitializeComponent();
         }
-
-        private void label5_Click(object sender, EventArgs e)
+        public bool confirmacion()
         {
-           
+            bool ok = true;
+
+            if (texId_Pro.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texId_Pro, "Ingresar ID");
+            }
+
+            if (texNombre.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texNombre, "Ingresar ID");
+            }
+
+            if (texDescr.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texDescr, "Ingresar ID");
+            }
+
+            if (texPrecio.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(texPrecio, "Ingresar ID");
+            }
+
+            if (TBCantidad.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(TBCantidad, "Ingrese la cantidad a comprar");
+            }
+
+            return ok;
+
+        }
+        public void limpieza()
+        {
+            TBCantidad.Text="";
+            texId_Pro.Text = "";
+            texDescr.Text = "";
+            texNombre.Text = "";
+            texPrecio.Text = "";
+            TBCantidad.Text = "";
+            
+        }
+        public void borrarerror()
+        {
+            errorcito.SetError(texId_Pro, "");
+            errorcito.SetError(texNombre, "");
+            errorcito.SetError(texDescr, "");
+            errorcito.SetError(TBCantidad, "");
         }
         public void ventas()
         {
@@ -34,19 +83,27 @@ namespace Farmacia_Proyecto
        
         private void BAgregarCarrito_Click(object sender, EventArgs e)
         {
-            conexion.Open();
-            string consulta = "SELECT * FROM Producto WHERE ID_Prod='" + texId_Pro.Text + "'";
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            SqlDataReader registro = comando.ExecuteReader();
-            if (registro.Read())
+            borrarerror();
+            bool ok = true;
+            if (texId_Pro.Text == "")
             {
-                texNombre.Text = registro["Nombre"].ToString();
-                texDescr.Text = registro["Descripcion"].ToString();
-                texPrecio.Text = registro["Precio"].ToString();
+                ok = false;
+                errorcito.SetError(texId_Pro, "Ingresar ID");
             }
-            conexion.Close();
-
-
+            else
+            {
+                conexion.Open();
+                string consulta = "SELECT * FROM Producto WHERE ID_Prod='" + texId_Pro.Text + "'";
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                SqlDataReader registro = comando.ExecuteReader();
+                if (registro.Read())
+                {
+                    texNombre.Text = registro["Nombre"].ToString();
+                    texDescr.Text = registro["Descripcion"].ToString();
+                    texPrecio.Text = registro["Precio"].ToString();
+                }
+                conexion.Close();
+            }
            
         }
 
@@ -66,25 +123,29 @@ namespace Farmacia_Proyecto
 
         private void Agregado_Click(object sender, EventArgs e)
         {
-            double n;
-            //dataFactura.Rows.Add(texNombre.Text);
-            //dataFactura.Rows.Add(texDescr.Text);
-            //dataFactura.Rows.Add(texPrecio.Text);
-
-            DataGridViewRow fila = new DataGridViewRow();
-            fila.CreateCells(dataFactura);
-            fila.Cells[0].Value = texId_Pro.Text;
-            fila.Cells[1].Value = texNombre.Text;
-            fila.Cells[2].Value = texDescr.Text;
-            fila.Cells[3].Value = TBCantidad.Text;
-            fila.Cells[4].Value = double.Parse(texPrecio.Text) * double.Parse(TBCantidad.Text);
-
-
-            dataFactura.Rows.Add(fila);
-
-            SumaColumna();
-
-
+            borrarerror();
+            bool ok = true; 
+            if (TBCantidad.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(TBCantidad, "Ingrese la cantidad a comprar");
+            }
+            else 
+            {
+               
+                double n;
+                DataGridViewRow fila = new DataGridViewRow();
+                fila.CreateCells(dataFactura);
+                fila.Cells[0].Value = texId_Pro.Text;
+                fila.Cells[1].Value = texNombre.Text;
+                fila.Cells[2].Value = texDescr.Text;
+                fila.Cells[3].Value = TBCantidad.Text;
+                fila.Cells[4].Value = double.Parse(texPrecio.Text) * double.Parse(TBCantidad.Text);
+                dataFactura.Rows.Add(fila);
+                SumaColumna();
+                
+            }
+            limpieza();
         }
 
         public void SumaColumna()
@@ -102,40 +163,6 @@ namespace Farmacia_Proyecto
             TBIVa.Text = iva.ToString();
             suma = double.Parse(TbSubTotal.Text) + double.Parse(TBIVa.Text);
             TBTotal.Text = suma.ToString();
-
-        }
-
-        private void texId_Pro_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //conexion.Open();
-            //string consulta = "SELECT * FROM Producto WHERE ID_Prod='" + texId_Pro.Text + "'";
-            //SqlCommand comando = new SqlCommand(consulta, conexion);
-            //SqlDataReader registro = comando.ExecuteReader();
-            //if (registro.Read())
-            //{
-            //    texNombre.Text = registro["Nombre"].ToString();
-            //    texDescr.Text = registro["Descripcion"].ToString();
-            //    texPrecio.Text = registro["Precio"].ToString();
-            //}
-            //conexion.Close();
-
-        }
-
-        private void TBCantidad_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //DataGridViewRow fila = new DataGridViewRow();
-            //fila.CreateCells(dataFactura);
-            //fila.Cells[0].Value = texId_Pro.Text;
-            //fila.Cells[1].Value = texNombre.Text;
-            //fila.Cells[2].Value = texDescr.Text;
-            //fila.Cells[3].Value = TBCantidad.Text;
-            //fila.Cells[4].Value = texPrecio.Text;
-
-            //dataFactura.Rows.Add(fila);
-        }
-
-        private void TBCantidad_KeyDown(object sender, KeyEventArgs e)
-        {
 
         }
 
@@ -179,17 +206,16 @@ namespace Farmacia_Proyecto
 
         private void BLimpiar_Click(object sender, EventArgs e)
         {
-            TBCantidad.Clear();
-            texId_Pro.Clear();
-            texDescr.Clear();
-            texNombre.Clear();
-            texPrecio.Clear();
-            TBCantidad.Clear();
+            dataFactura.Rows.Clear();
             TBIVa.Clear();
             TbSubTotal.Clear();
             TBTotal.Clear();
-            dataFactura.Rows.Clear();
+            limpieza();
+        }
 
+        private void BBorrar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
