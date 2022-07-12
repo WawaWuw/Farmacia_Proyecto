@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,7 +48,9 @@
             this.texBusqueda = new System.Windows.Forms.TextBox();
             this.Busqueda = new System.Windows.Forms.Button();
             this.Refresf = new System.Windows.Forms.Button();
+            this.errorcito = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataClie)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorcito)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -222,6 +225,10 @@
             this.Refresf.UseVisualStyleBackColor = true;
             this.Refresf.Click += new System.EventHandler(this.Refresf_Click);
             // 
+            // errorcito
+            // 
+            this.errorcito.ContainerControl = this;
+            // 
             // Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,6 +258,7 @@
             this.Text = "Cliente";
             this.Load += new System.EventHandler(this.Cliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataClie)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorcito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,5 +285,6 @@
         private System.Windows.Forms.TextBox texBusqueda;
         private System.Windows.Forms.Button Busqueda;
         private System.Windows.Forms.Button Refresf;
+        private System.Windows.Forms.ErrorProvider errorcito;
     }
 }

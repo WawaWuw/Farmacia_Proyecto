@@ -167,14 +167,9 @@ namespace Farmacia_Proyecto
         private void Modificar_Click(object sender, EventArgs e)
         {
 
-            bool ok = true;
+            
             borrarerror();
-            if (texId_Pro.Text == "")
-            {
-                ok = false;
-                errorcito.SetError(texId_Pro, "Ingresar ID");
-            }
-            else
+            if (confirmacion())
             {
                 string consulta = "UPDATE Producto SET Nombre = @nombre ,Descripcion= @descripcion,Existencia= @existencia,Precio= @precio,FechaVenci= @fechaVen WHERE ID_Prod=@id";
                 conexion.Open();
@@ -190,6 +185,10 @@ namespace Farmacia_Proyecto
                 llenar_tabla();
                 Limpieza();
                 conexion.Close();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto");
             }
            
         }

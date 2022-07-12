@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataEmp = new System.Windows.Forms.DataGridView();
             this.CombCar = new System.Windows.Forms.ComboBox();
             this.CombEsta = new System.Windows.Forms.ComboBox();
@@ -43,7 +44,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.errorcito = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataEmp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorcito)).BeginInit();
             this.SuspendLayout();
             // 
             // dataEmp
@@ -183,6 +186,10 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "ID Empleado";
             // 
+            // errorcito
+            // 
+            this.errorcito.ContainerControl = this;
+            // 
             // Empleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,6 +215,7 @@
             this.Text = "Empleado";
             this.Load += new System.EventHandler(this.Empleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataEmp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorcito)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +238,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ErrorProvider errorcito;
     }
 }

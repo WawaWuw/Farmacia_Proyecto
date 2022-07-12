@@ -19,6 +19,36 @@ namespace Farmacia_Proyecto
             InitializeComponent();
         }
         SqlConnection conexion = new SqlConnection("Server=DESKTOP-1LQHI27;database=Proyecto_Farmaci;integrated security=true");
+        public bool confirmacion()
+        {
+            bool ok = true;
+
+            if (txtNom.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(txtNom, "Ingresar Nombre");
+            }
+
+            if (txtapellido.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(txtapellido, "Ingresar apellido");
+            }
+
+            if (txttelefono.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(txttelefono, "Ingresar telefono");
+            }
+
+            return ok;
+        }
+        public void borrarerror()
+        {
+            errorcito.SetError(txtNom, "");
+            errorcito.SetError(txtapellido, "");
+            errorcito.SetError(txttelefono, "");
+        }
         public void Limpieza()
         {
             labelid.Text = "";
@@ -64,35 +94,50 @@ namespace Farmacia_Proyecto
 
         private void agregado_Click(object sender, EventArgs e)
         {
-
-            string consulta = "INSERT INTO Empleado (Nombre,Apellido,telefono,cargo,Estado) values(@nombre,@apellido,@telefono,@cargo,@estado)";
-            conexion.Open();
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            comando.Parameters.AddWithValue("@nombre", txtNom.Text);
-            comando.Parameters.AddWithValue("@apellido",txtapellido.Text );
-            comando.Parameters.AddWithValue("@telefono", txttelefono.Text);
-            comando.Parameters.AddWithValue("@cargo", CombCar.SelectedItem);
-            comando.Parameters.AddWithValue("@estado",CombEsta.SelectedItem);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Reguistro agregado");
-            llenar_tabla();
-            Limpieza();
-            repetidos();
-            conexion.Close();
+            borrarerror();
+            if (confirmacion())
+            {
+                string consulta = "INSERT INTO Empleado (Nombre,Apellido,telefono,cargo,Estado) values(@nombre,@apellido,@telefono,@cargo,@estado)";
+                conexion.Open();
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@nombre", txtNom.Text);
+                comando.Parameters.AddWithValue("@apellido", txtapellido.Text);
+                comando.Parameters.AddWithValue("@telefono", txttelefono.Text);
+                comando.Parameters.AddWithValue("@cargo", CombCar.SelectedItem);
+                comando.Parameters.AddWithValue("@estado", CombEsta.SelectedItem);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Reguistro agregado");
+                llenar_tabla();
+                Limpieza();
+                repetidos();
+                conexion.Close();
+            }
+            else
+            {
+                MessageBox.Show("Ingrese valores");
+            }
         }
 
         private void Modificar_Click(object sender, EventArgs e)
         {
-            string consulta = "UPDATE Empleado  SET Estado =@estado  WHERE ID_Empleado=@id";
-            conexion.Open();
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            comando.Parameters.AddWithValue("@id", labelid.Text);
-            comando.Parameters.AddWithValue("@estado", CombEsta.SelectedItem);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Registro actualizado");
-            llenar_tabla();
-            Limpieza();
-            conexion.Close();
+            borrarerror();
+            if (confirmacion())
+            {
+                string consulta = "UPDATE Empleado  SET Estado =@estado  WHERE ID_Empleado=@id";
+                conexion.Open();
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@id", labelid.Text);
+                comando.Parameters.AddWithValue("@estado", CombEsta.SelectedItem);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Registro actualizado");
+                llenar_tabla();
+                Limpieza();
+                conexion.Close();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un trabajador");
+            }
         }
     }
 }

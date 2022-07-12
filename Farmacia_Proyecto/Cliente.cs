@@ -17,6 +17,50 @@ namespace Farmacia_Proyecto
             InitializeComponent();
         }
         SqlConnection conexion = new SqlConnection("Server=DESKTOP-1LQHI27;database=Proyecto_Farmaci;integrated security=true");
+        public bool confirmacion()
+        {
+            bool ok = true;
+
+            if (txtNom.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(txtNom, "Ingresar Nombre");
+            }
+
+            if (txtapellido.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(txtapellido, "Ingresar apellido");
+            }
+
+            if (txttelefono.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(txttelefono, "Ingresar Telefono");
+            }
+            if (textDirec.Text == "")
+            {
+                ok = false;
+                errorcito.SetError(textDirec, "Ingresar Direccion");
+            }
+
+            return ok;
+
+        }
+        public void limpieza()
+        {
+            txtNom.Clear();
+            txtapellido.Clear();
+            txttelefono.Clear();
+            textDirec.Clear();
+        }
+        public void borrarerror()
+        {
+            errorcito.SetError(txtNom, "");
+            errorcito.SetError(txtapellido, "");
+            errorcito.SetError(txttelefono, "");
+            errorcito.SetError(textDirec, "");
+        }
         public void llenar_tabla()
         {
             string consulta = "select * from Cliente";
@@ -44,51 +88,53 @@ namespace Farmacia_Proyecto
 
         private void agregado_Click(object sender, EventArgs e)
         {
-            string consulta = "INSERT INTO Cliente (Nombre,Apellido,direccion,telefono) values(@nombre,@apellido,@Direccion,@Telefono)";
-            conexion.Open();
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            comando.Parameters.AddWithValue("@nombre", txtNom.Text);
-            comando.Parameters.AddWithValue("@apellido", txtapellido.Text);
-            comando.Parameters.AddWithValue("@Direccion", textDirec.Text);
-            comando.Parameters.AddWithValue("@Telefono", txttelefono.Text);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Reguistro agregado");
-            llenar_tabla();
-            //Limpieza();
-            //repetidos();
-            conexion.Close();
+            borrarerror();
+            if (confirmacion())
+            {
+                string consulta = "INSERT INTO Cliente (Nombre,Apellido,direccion,telefono) values(@nombre,@apellido,@Direccion,@Telefono)";
+                conexion.Open();
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@nombre", txtNom.Text);
+                comando.Parameters.AddWithValue("@apellido", txtapellido.Text);
+                comando.Parameters.AddWithValue("@Direccion", textDirec.Text);
+                comando.Parameters.AddWithValue("@Telefono", txttelefono.Text);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Reguistro agregado");
+                llenar_tabla();
+                limpieza();
+                conexion.Close();
+            }
+            else
+            {
+                MessageBox.Show("Ingrese valores");
+            }
+           
         }
 
         private void Modificar_Click(object sender, EventArgs e)
         {
-            string consulta = "Update Cliente  set Nombre = @Nombre, apellido = @Apellido, direccion = @Direccion, telefono = @Telefono where id_cliente = @Id_cliente";
-            conexion.Open();
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            comando.Parameters.AddWithValue("@id_cliente", labelid.Text);
-            comando.Parameters.AddWithValue("@nombre", txtNom.Text);
-            comando.Parameters.AddWithValue("@apellido", txtapellido.Text);
-            comando.Parameters.AddWithValue("@Direccion", textDirec.Text);
-            comando.Parameters.AddWithValue("@Telefono", txttelefono.Text);
-            comando.ExecuteNonQuery();
-         
-            MessageBox.Show("Registro actualizado");
-            llenar_tabla();
-            //Limpieza();
-            conexion.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            conexion.Open();
-            string Consulta = "Delete from Cliente where Id_cliente = @Id_Cliente";
-            SqlCommand comando = new SqlCommand(Consulta, conexion);
-            comando.Parameters.AddWithValue("@Id_Cliente",labelid.Text);
-            comando.ExecuteNonQuery();
-            MessageBox.Show("Cliente Borrado");
-            llenar_tabla();
-            conexion.Close();
-
-            
+            borrarerror();
+            if (confirmacion())
+            {
+                string consulta = "Update Cliente  set Nombre = @Nombre, apellido = @Apellido, direccion = @Direccion, telefono = @Telefono where id_cliente = @Id_cliente";
+                conexion.Open();
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                comando.Parameters.AddWithValue("@id_cliente", labelid.Text);
+                comando.Parameters.AddWithValue("@nombre", txtNom.Text);
+                comando.Parameters.AddWithValue("@apellido", txtapellido.Text);
+                comando.Parameters.AddWithValue("@Direccion", textDirec.Text);
+                comando.Parameters.AddWithValue("@Telefono", txttelefono.Text);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Registro actualizado");
+                llenar_tabla();
+                limpieza();
+                conexion.Close();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un cliente");
+            }
+          
         }
 
         private void button2_Click(object sender, EventArgs e)
