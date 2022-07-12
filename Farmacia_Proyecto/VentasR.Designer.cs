@@ -66,6 +66,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Agregado = new System.Windows.Forms.Button();
             this.errorcito = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelNum = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataFactura)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorcito)).BeginInit();
@@ -370,6 +371,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelNum);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
@@ -399,6 +401,15 @@
             // errorcito
             // 
             this.errorcito.ContainerControl = this;
+            // 
+            // labelNum
+            // 
+            this.labelNum.AutoSize = true;
+            this.labelNum.Location = new System.Drawing.Point(122, 33);
+            this.labelNum.Name = "labelNum";
+            this.labelNum.Size = new System.Drawing.Size(11, 16);
+            this.labelNum.TabIndex = 11;
+            this.labelNum.Text = ".";
             // 
             // VentasR
             // 
@@ -482,5 +493,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button Agregado;
         private System.Windows.Forms.ErrorProvider errorcito;
+        private System.Windows.Forms.Label labelNum;
     }
 }

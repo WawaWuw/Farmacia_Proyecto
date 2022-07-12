@@ -44,20 +44,29 @@ namespace Farmacia_Proyecto
         }
         public bool login()
         {
-            conexion.Open();
-            string consulta = "select * from Empleado where ID_Empleado="+texID.Text+" and contraseña ='"+texcontra.Text+"'";
-            SqlCommand comando = new SqlCommand(consulta, conexion);
-            SqlDataReader lector;
-            lector = comando.ExecuteReader();           
-            if (lector.HasRows)
+            try
             {
-                return true;
+                conexion.Open();
+                string consulta = "select * from Empleado where ID_Empleado=" + texID.Text + " and contraseña ='" + texcontra.Text + "'";
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                SqlDataReader lector;
+                lector = comando.ExecuteReader();
+                if (lector.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch
             {
+                MessageBox.Show("campos invalidos");
                 return false;
             }
-                 
+
+          
             
         }
         
@@ -83,6 +92,16 @@ namespace Farmacia_Proyecto
           else
                 MessageBox.Show("Ingrese valores validos");
             conexion.Close();
+        }
+
+        private void cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void inicio_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
         }
     }
 }

@@ -106,12 +106,22 @@ namespace Farmacia_Proyecto
             }
            
         }
+        public void num()
+        {
+            string consulta = ("select(select distinct top 1 numfact from Factura order by numfact desc) + 1 as Numfactura");
+            SqlCommand comando = new SqlCommand(consulta, conexion);
+            comando.ExecuteNonQuery();
+            conexion.Close();
+            
+        }
+
 
         private void VentasR_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'proyecto_FarmaciDataSet.Producto' Puede moverla o quitarla según sea necesario.
             DateTime f = DateTime.Today;
             labelF.Text = f.ToShortDateString();
+
            
         }
 
@@ -169,27 +179,34 @@ namespace Farmacia_Proyecto
         private void BFacturar_Click(object sender, EventArgs e)
         {
 
-            SqlCommand cmd = new SqlCommand("sp_Ventas", conexion);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@id_Venta", ""));
-            cmd.Parameters.Add(new SqlParameter("@id_Prod", SqlDbType.VarChar, 50));
-            cmd.Parameters.Add(new SqlParameter("@cantidadc", SqlDbType.Int));
-            cmd.Parameters.Add(new SqlParameter("@fechaV", SqlDbType.Date));
-            conexion.Open();
-
-            foreach (DataGridViewRow row in dataFactura.Rows)
+            try
             {
-                if (!row.IsNewRow)
+                SqlCommand cmd = new SqlCommand("sp_Ventas", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@id_Venta", ""));
+                cmd.Parameters.Add(new SqlParameter("@id_Prod", SqlDbType.VarChar, 50));
+                cmd.Parameters.Add(new SqlParameter("@cantidadc", SqlDbType.Int));
+                cmd.Parameters.Add(new SqlParameter("@fechaV", SqlDbType.Date));
+                conexion.Open();
+
+                foreach (DataGridViewRow row in dataFactura.Rows)
                 {
-                    cmd.Parameters["@id_Prod"].Value = row.Cells[0].Value;
-                    cmd.Parameters["@CantidadC"].Value = row.Cells[3].Value;
+                    if (!row.IsNewRow)
+                    {
+                        cmd.Parameters["@id_Prod"].Value = row.Cells[0].Value;
+                        cmd.Parameters["@CantidadC"].Value = row.Cells[3].Value;
+
+                    }
 
                 }
-
+                cmd.Parameters["@Fechav"].Value = labelF.Text;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Datos facturados con Exito. ", "Informacion");
             }
-            cmd.Parameters["@Fechav"].Value = labelF.Text;
-            cmd.ExecuteNonQuery();
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Datos NO Facturados", "Informacion");
+            }
 
         }
 
